@@ -1,6 +1,6 @@
 name: native_toolchain_meson
-description: A starting point for Dart libraries or applications.
-version: 1.0.0
+description: Use Meson projects in Dart native assets build hooks.
+version: 0.0.0
 
 environment:
   sdk: ^3.5.4
