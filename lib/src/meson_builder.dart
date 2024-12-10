@@ -1,7 +1,3 @@
-// Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
-// for details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
-
 import 'dart:io';
 
 import 'package:glob/glob.dart';
@@ -11,6 +7,7 @@ import 'package:native_assets_cli/code_assets_testing.dart';
 import 'package:path/path.dart' as p;
 
 import 'run_meson_builder.dart';
+import 'vendor/native_toolchain_c/cbuilder/linkmode.dart';
 
 /// Specification for building an artifact by building a [target] in a Meson
 /// [project].

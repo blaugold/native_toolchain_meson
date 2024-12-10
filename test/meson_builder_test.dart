@@ -1,15 +1,10 @@
-// Copyright (c) 2023, the Dart project authors.  Please see the AUTHORS file
-// for details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
-
 import 'dart:ffi';
 import 'dart:io';
 
-import 'package:native_toolchain_c/native_toolchain_c.dart';
-import 'package:native_toolchain_c/src/utils/run_process.dart';
+import 'package:native_toolchain_meson/src/meson_builder.dart';
+import 'package:native_toolchain_meson/src/vendor/native_toolchain_c/utils/run_process.dart';
 import 'package:test/test.dart';
 
-import '../helpers.dart';
 import 'helpers.dart';
 
 void main() {
@@ -23,7 +18,7 @@ void main() {
 
       final buildConfigBuilder = BuildConfigBuilder()
         ..setupHookConfig(
-          buildAssetTypes: [CodeAsset.type],
+          supportedAssetTypes: [CodeAsset.type],
           packageName: 'dummy',
           packageRoot: mesonHelloWorldProjectUri,
           targetOS: OS.current,
@@ -85,7 +80,7 @@ void main() {
 
         final buildConfigBuilder = BuildConfigBuilder()
           ..setupHookConfig(
-            buildAssetTypes: [CodeAsset.type],
+            supportedAssetTypes: [CodeAsset.type],
             packageName: 'dummy',
             packageRoot: mesonHelloWorldProjectUri,
             targetOS: OS.current,
