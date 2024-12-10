@@ -30,7 +30,7 @@ jobs:
           ndk-version: r27
         if: ${{ matrix.os != 'macos' }}
 
-      - run: pip3 install meson==1.0.0
+      - run: pip3 install --break-system-packages meson==1.0.0
 
       - uses: seanmiddleditch/gha-setup-ninja@16b940825621068d98711680b6c3ff92201f8fc0
 
