@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:logging/logging.dart';
-import 'package:native_toolchain_meson/src/utils/run_process.dart';
+import 'package:native_toolchain_meson/src/vendor/native_toolchain_c/utils/run_process.dart';
 
 const repo = 'https://github.com/blaugold/native';
 const ref = 'meson_builder';
@@ -10,6 +10,7 @@ const sourceBasePath = 'pkgs/native_toolchain_c/lib/src';
 final sourcePatterns = [
   RegExp('tool/.*'),
   RegExp('native_toolchain/.*'),
+  RegExp('utils/.*'),
   'cbuilder/compiler_resolver.dart',
 ];
 
