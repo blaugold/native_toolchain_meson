@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "0 0 * * 0" # weekly
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu, macos, windows]
+        sdk: [stable, dev]
+
+
+    runs-on: ${{ matrix.os }}-latest
+
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+
+      - uses: dart-lang/setup-dart@e630b99d28a3b71860378cafdc2a067c71107f94
+        with:
+          sdk: ${{ matrix.sdk }}
+
+      - uses: nttld/setup-ndk@afb4c9964b521afb97c864b7d40b11e6911bd410
+        with:
+          ndk-version: r27
+        if: ${{ matrix.os != 'macos' }}
+
+      - run: pip3 install meson==1.0.0
+
+      - uses: seanmiddleditch/gha-setup-ninja@16b940825621068d98711680b6c3ff92201f8fc0
+
+      - run: dart pub get
+
+      - run: dart analyze --fatal-infos
+
+      - run: dart format --output=none --set-exit-if-changed .
+
+      - name: Install native toolchains
+        run: sudo apt-get update && sudo apt-get install clang-15 gcc-i686-linux-gnu gcc-aarch64-linux-gnu gcc-arm-linux-gnueabihf gcc-riscv64-linux-gnu
+        if: ${{ matrix.os == 'ubuntu' }}
+
+      - run: dart test
