@@ -31,6 +31,10 @@ jobs:
         if: ${{ matrix.os != 'macos' }}
 
       - run: pip3 install --break-system-packages meson==1.0.0
+        if: ${{ matrix.os == 'macos' }}
+
+      - run: pip3 install meson==1.0.0
+        if: ${{ matrix.os != 'macos' }}
 
       - uses: seanmiddleditch/gha-setup-ninja@v5
 
