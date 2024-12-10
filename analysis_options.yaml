@@ -4,3 +4,6 @@ linter:
   rules:
     - prefer_relative_imports
 
+analyzer:
+  exclude:
+    - "lib/src/vendor/**"
