@@ -82,7 +82,7 @@ void main() {
           ..setupHookConfig(
             supportedAssetTypes: [CodeAsset.type],
             packageName: 'dummy',
-            packageRoot: mesonHelloWorldProjectUri,
+            packageRoot: mesonAddLibProjectUri,
             targetOS: OS.current,
             buildMode: buildMode,
           )

@@ -112,7 +112,7 @@ Uri findPackageRoot(String packageName) {
       "'${Directory.current.uri.toFilePath()}'.");
 }
 
-final Uri packageUri = findPackageRoot('native_toolchain_c');
+final Uri packageUri = findPackageRoot('native_toolchain_meson');
 
 extension on Uri {
   String get name => pathSegments.where((e) => e != '').last;
@@ -299,7 +299,7 @@ Future<void> expectPageSize(
   }
 }
 
-final mesonFixturesUri = packageUri.resolve('test/meson_builder/testfiles/');
+final mesonFixturesUri = packageUri.resolve('test/testfiles/');
 final mesonAddLibProjectUri = mesonFixturesUri.resolve('meson_add_lib/');
 final mesonHelloWorldProjectUri =
     mesonFixturesUri.resolve('meson_hello_world/');
